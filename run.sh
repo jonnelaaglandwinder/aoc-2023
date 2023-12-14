@@ -20,8 +20,11 @@ case "$2" in
     stdin)
         input=/dev/stdin
         ;;
+    input)
+        input=day-"$day"/input.txt
+        ;;
     sample)
-        input="$day"/sample.txt
+        input=day-"$day"/sample.txt
         ;;
     *)
         __usage
@@ -30,6 +33,6 @@ esac
 
 [ -f "$input" ] || __fail "Input file not found: $input"
 
-echo "Running $day with input $input"
+echo "Running day $day with input $input"
 
-.venv/bin/python "$day"/main.py < "$input"
+.venv/bin/python "day-$day"/main.py < "$input"
